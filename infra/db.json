@@ -1,0 +1,236 @@
+{
+    "tables":[
+        {
+            "name":"users",
+            "columns":[
+                {
+                    "name":"id",
+                    "type":"INTEGER",
+                    "options":"PRIMARY KEY AUTOINCREMENT"
+                },
+                {
+                    "name":"name",
+                    "type":"TEXT",
+                    "options":""
+                },
+                {
+                    "name":"username",
+                    "type":"TEXT",
+                    "options":""
+                },
+                {
+                    "name":"password",
+                    "type":"TEXT",
+                    "options":""
+                }
+            ]
+        },
+        {
+            "name":"challenges",
+            "columns":[
+                {
+                    "name":"id",
+                    "type":"INTEGER",
+                    "options":"PRIMARY KEY"
+                },
+                {
+                    "name":"name",
+                    "type":"TEXT",
+                    "options":""
+                },
+                {
+                    "name":"category",
+                    "type":"TEXT",
+                    "options":""
+                },
+                {
+                    "name":"points",
+                    "type":"INTEGER",
+                    "options":""
+                },
+                {
+                    "name":"flag",
+                    "type":"TEXT",
+                    "options":""
+                },
+                {
+                    "name":"url",
+                    "type":"TEXT",
+                    "options":""
+                },
+                {
+                    "name":"description",
+                    "type":"TEXT",
+                    "options":""
+                },
+                {
+                    "name":"hint",
+                    "type":"TEXT",
+                    "options":""
+                },
+                {
+                    "name":"published",
+                    "type":"INTEGER",
+                    "options":""
+                },
+                {
+                    "name":"UNIQUE(name)",
+                    "type":"",
+                    "options":""
+                }
+            ]
+        },
+        {
+            "name":"solves",
+            "columns":[
+                {
+                    "name":"username",
+                    "type":"TEXT",
+                    "options":""
+                },
+                {
+                    "name":"chall_id",
+                    "type":"INTEGER",
+                    "options":""
+                },
+                {
+                    "name":"points",
+                    "type":"INTEGER",
+                    "options":""
+                }
+            ]
+        }
+    ],
+    "challenges":[
+        {
+            "id":1,
+            "name":"HTML Code source",
+            "category":"Web",
+            "points":50,
+            "flag":"flag{F1rst_St3p_1n_W3b}",
+            "url":"http://tournament.0xhorizon.eu:16777",
+            "description":"Retrouvez simplement le flag dans le code source de cette page",
+            "hint":"https://developer.mozilla.org/fr/docs/Web/HTTP"
+        },
+        {
+            "id":2,
+            "name":"HTTP - POST",
+            "category":"Web",
+            "points":100,
+            "flag":"flag{P0st_r3qu3st}",
+            "url":"http://tournament.0xhorizon.eu:16776",
+            "description":"Faites une requête POST simple à cette page pour obtenir le flag",
+            "hint":"https://developer.mozilla.org/fr/docs/Web/HTTP"
+        },
+        {
+            "id":3,
+            "name":"HTTP - POST Avancé",
+            "category":"Web",
+            "points":200,
+            "flag":"flag{Adv4nc3d_P0st_r3qu3st}",
+            "url":"http://tournament.0xhorizon.eu:16775",
+            "description":"Faites une requête POST avec comme paramètre \"give=cookie\" pour obtenir le flag",
+            "hint":"https://developer.mozilla.org/fr/docs/Web/HTTP"
+        },
+        {
+            "id":4,
+            "name":"Quelques lignes",
+            "category":"Fichier",
+            "points":100,
+            "flag":"flag{y0u_h4v3_t0_r34d_S0m3_Sp3c1f1c_L1n3s}",
+            "url":"https://tournament.0xhorizon.eu/some-lines/",
+            "description":"Récupérez le flag formé par les lignes multiples de 17",
+            "hint":"https://www.w3schools.com/python/python_file_handling.asp"
+        },
+        {
+            "id":5,
+            "name":"Des lignes spéciales",
+            "category":"Fichier",
+            "points":150,
+            "flag":"flag{y0u_h4v3_t0_r34d_S0m3_L1n3s_wh1ch_St4rts_w1th_!}",
+            "url":"https://tournament.0xhorizon.eu/special-lines/",
+            "description":"Récupérez le flag formé par le dernier caractère des lignes commençant par !",
+            "hint":"https://www.w3schools.com/python/python_file_handling.asp"
+        },
+        {
+            "id":6,
+            "name":"Algorithme - Javascript",
+            "category":"Algo",
+            "points":50,
+            "flag":"flag{3asy_0utput}",
+            "url":"https://tournament.0xhorizon.eu/algo-js/",
+            "description":"Lisez le code et trouvez le flag grâce à lui (le flag est la sortie affichée par le code)",
+            "hint":"https://tournament.0xhorizon.eu/no-help/"
+        },
+        {
+            "id":7,
+            "name":"Algorithme - C",
+            "category":"Algo",
+            "points":150,
+            "flag":"flag{n0t_3asY_0utpUt}",
+            "url":"https://tournament.0xhorizon.eu/algo-c/",
+            "description":"Lisez le code et trouvez le flag grâce à lui (le flag est la sortie affichée par le code)",
+            "hint":"https://tournament.0xhorizon.eu/no-help/"
+        },
+        {
+            "id":8,
+            "name":"Quiz - Module",
+            "category":"Connaissances/Recherches",
+            "points":50,
+            "flag":"flag{d0nt_f0rg3t_pip}",
+            "url":"http://tournament.0xhorizon.eu:16773",
+            "description":"Répondez à la question posée sur la page pour obtenir le flag",
+            "hint":"https://tournament.0xhorizon.eu/no-help/"
+        },
+        {
+            "id":9,
+            "name":"Quiz - La classe",
+            "category":"Connaissances/Recherches",
+            "points":50,
+            "flag":"flag{D3cl4r3_cl4ss_w1th_cl4ss}",
+            "url":"http://tournament.0xhorizon.eu:16774",
+            "description":"Répondez à la question posée sur la page pour obtenir le flag",
+            "hint":"https://tournament.0xhorizon.eu/no-help/"
+        },
+        {
+            "id":10,
+            "name":"TCP Simple",
+            "category":"Réseaux",
+            "points":200,
+            "flag":"flag{F1rst_St3p_1n_TCP}",
+            "url":"https://tournament.0xhorizon.eu/infos/",
+            "description":"Connectez vous à 0xhorizon.eu sur le port 16770 et lisez le flag que la connexion vous envoie",
+            "hint":"https://docs.python.org/3/library/socket.html"
+        },
+        {
+            "id":11,
+            "name":"TCP Data",
+            "category":"Réseaux",
+            "points":300,
+            "flag":"flag{S3nd_d4t4_w1th_TCP}",
+            "url":"https://tournament.0xhorizon.eu/infos/",
+            "description":"Connectez vous au serveur 0xhorizon.eu sur le port 16772 et envoyez lui ce mot de passe en moins de 2 secondes: g1ve_m3_th3_fl4g",
+            "hint":"https://docs.python.org/3/library/socket.html"
+        },
+        {
+            "id":12,
+            "name":"TCP Maths",
+            "category":"Réseaux",
+            "points":400,
+            "flag":"flag{M4ths_W1th_TCP_n0t_3asY}",
+            "url":"https://tournament.0xhorizon.eu/infos/",
+            "description":"Connectez vous au serveur 0xhorizon.eu sur le port 16771 et envoyez la valeur de x (arrondi au dixième) solution de l'équation qui vous sera envoyée",
+            "hint":"https://docs.python.org/3/library/socket.html"
+        },
+        {
+            "id":13,
+            "name":"Apprenti Scrapper",
+            "category":"Web",
+            "points":400,
+            "flag":"flag{4pprent1c3_scr4pp3r}",
+            "url":"http://tournament.0xhorizon.eu:16778",
+            "description":"Suivez les consignes que l'on vous donne sur la page qui vous permettront de récupérer toutes les parties du flag. N'oubliez pas de spécifier vos cookies dans vos requêtes, demandez de l'aide au besoin.",
+            "hint":"https://www.crummy.com/software/BeautifulSoup/bs4/doc/"
+        }
+    ]
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Apprenti Scrapper</title>
+</head>
+<body>
+    <div class="container" style="text-align: center;">
+        <div class="alert alert-light" role="alert">
+            <h4 class="alert-heading">Salut à toi jeune Scrapper, voici ton cookie de session: sess={{session}}</h4>
+            <img src="{{ url_for('static', filename='entrepreneur.png') }}" alt="">
+            <hr>
+            <p>
+                Alors si aujourd'hui je me permets de te contacter c'est pour une raison très simple.
+                Il faut que tu te poses les bonnes questions, est ce que tu préfères faire pitié et surfer sur le web tous les jours, ou commencer très rapidement à comprendre comment le HTML fonctionne ?
+                Moi je pense que la question elle est vite répondue, alors sois tu lis les consignes juste en dessous, soit tu vas aider ta grand-mère à taper "Google" dans google.
+            </p>
+            <hr>
+          </div>
+          <h2>Vous devrez répondre aux 5 questions grâce à la page <a href="{{ page }}">{{ page }}</a></h2>
+          <p>(Attention votre session ne dure qu'une minute donc faites vite), il vous reste <span id="time_left"></span></p>
+          <br>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Question 1
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Bon la première question est facile, récupérez le titre de la page
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Question 2
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  On va complexifier un peu... Récupérez le contenu de la 16ème balise <code>&lt;span&gt;</code>.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Question 3
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Récupérez l'id du premier élèment enfant du <code>&lt;div&gt;</code> ayant pour id: {{ (session[-1]+session[1])|transform }}
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                    Question 4
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Récupérez l'id de l'avant dernier élèment ayant la classe {{ session[-1]|transform }}
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                    Question 5
+                  </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    On finit par une difficile... Récupérez l'id de l'élèment qui a pour contenu {{ session[-2]|transform }}
+                  </div>
+                </div>
+              </div>
+          </div>
+            <hr>
+          <div id="form">
+            <div class="mb-3">
+              <label for="" class="form-label">Réponse à la question 1</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Réponse à la question 2</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Réponse à la question 3</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Réponse à la question 4</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Réponse à la question 5</label>
+              <input type="text" class="form-control">
+            </div>
+            <button class="btn btn-primary" onclick="submit()">Valider</button>
+            <br>
+            <p id="message"></p>
+          </div>
+            <br>
+            <br>
+            <br>
+            <br>
+    </div>
+</body>
+<script>
+  function post(url, params={}){
+    var params_post = []
+    for(const key in params){
+        params_post.push(`${key}=${params[key]}`)
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, false);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+    xhr.send(params_post.join("&"))
+    return JSON.parse(xhr.responseText)
+  }
+
+  function submit(){
+    var inputs = document.getElementsByClassName("form-control");
+    var params = {}
+    for(let i = 0; i < inputs.length; i++){
+      params[`question${i+1}`] = inputs[i].value;
+    }
+    var rep = post("/answer/", params);
+    document.getElementById("message").innerText = rep["message"];
+  }
+
+  function check_time_left(){
+    var timestamp = parseFloat(document.cookie.split("=")[1])
+    var time_left = Math.round(60 - (Date.now()/1000 - timestamp))
+    document.getElementById("time_left").innerText = `${time_left} secondes`
+    if(time_left <= 0){
+      document.location.replace("/session_killed/")
+    }
+  }
+  check_time_left()
+  setInterval(
+    check_time_left,
+    1000
+  )
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</html>

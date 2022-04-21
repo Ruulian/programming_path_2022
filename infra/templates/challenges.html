@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'head.html' %}
+    <title>Challenges</title>
+  </head>
+  <body>
+    <div class="navbar-dark text-white">
+      <div class="container">
+        {% include 'nav.html' %}
+      </div>
+    </div>
+    <h1 class="display-3" style="text-align: center"><b>Challenges !<span class="vim-caret">&nbsp;</span></b></h1>
+    <div class="lead mb-3 text-mono text-success"style="text-align: center">
+        Prêt à résoudre les challenges ?
+    </div>
+    <div class="jumbotron bg-transparent mb-0 radius-0">
+      <div class="container">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="panel-group" id="accordion" is-disabled="true">
+                {% if challenges == [] %}
+                  <h1 class="display-1" style="text-align: center;">Le concours n'a pas encore commencé</h1>
+                {% else %}
+                  {% for category in challenges %}
+                  <h2>{{ category[0] }}</h2>
+                    {% for chall in category[1] %}
+                    <div id="panel{{ chall[0] }}" class="panel panel-{{ chall[6] }}">
+                      <div class="container">
+                        <div class="panel-heading">
+                          <a id="title{{ chall[0] }}" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ chall[0] }}" class="title-{{ chall[6] }}">
+                            <div class="panel-title">
+                              <h4>
+                                {{ chall[1] }}
+                                <p style="float:right">
+                                  {{ chall[0]|points }} points
+                                </p>
+                              </h4>
+                            </div>
+                          </a>
+                        </div>
+                        <div id="collapse{{ chall[0] }}" class="panel-collapse collapse in">
+                          <div class="panel-body">
+                            {{ chall[4] }}
+                            <br>
+                            <br>
+                            <div class="row justify-content-between">
+                              <div class="col-xl-4 align-self-center">
+                                <a href="{{ chall[3] }}" target="_blank" class="btn btn-shadow text-mono btn-outline-success" style="width:100%"><span class="fa fa-download mr-2"></span>Accéder au challenge</a>
+                              </div>
+                              <div class="col-xl-4 align-self-center">
+                                    <button type="button" onclick="window.open('{{ chall[5] }}', '_blank').focus();" class="btn btn-shadow btn-outline-success" data-toggle="modal" data-target="#hint{{ chall[0] }}" style="width:100%"><span class="far fa-lightbulb mr-2"></span>Voir l'aide</button>
+                              </div>
+                              <div class="col-xl-4 align-self-center">
+                                <span id="result{{ chall[0] }}"></span>
+                                <div class="input-group">
+                                  <input type="text" class="form-control" id="input{{ chall[0] }}" placeholder="Entrer le flag" aria-label="Entrer le flag" aria-describedby="basic-addon2">
+                                  <div class="input-group-append">
+                                    <button id="{{ chall[0] }}" class="btn btn-outline-success" onclick="submit_flag(this.id)">GO!</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    {% include 'scripts.html' %}
+  </body>
+</html>

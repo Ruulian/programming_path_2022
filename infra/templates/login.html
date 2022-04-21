@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'head.html' %}
+    <title>Connexion</title>
+  </head>
+  <body>
+
+    <div id="particles-js"></div>
+
+  <div class="navbar-dark text-white">
+    <div class="container">
+      {% include 'nav.html' %}
+
+    </div>
+  </div>
+
+<div class="container py-5 mb-5">
+  <h1 class="mb-5" style="text-align: center">Connexion<span class="vim-caret">͏͏&nbsp;&nbsp;</span></h1>
+  <div class="row py-4">
+    <div class="col-md-8 order-md-2">
+      <h4 class="mb-3">Entre tes identifiants</h4>
+        <div class="mb-3">
+          <label for="username">Pseudo</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">@</span>
+            </div>
+            <input type="text" class="form-control" name="username" id="username" placeholder="Pseudo" required>
+            <div class="invalid-feedback" style="width: 100%;">
+              Ton pseudo est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password">Mot de passe<span class="text-muted"></span></label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">#</span>
+            </div>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" required>
+            <div class="invalid-feedback">
+              Ton mot de passe est obligatoire.
+            </div>
+          </div>
+        </div>
+        <hr class="mb-4">
+        <hr class="mb-4">
+        <button class="btn btn-outline-success btn-shadow btn-lg btn-block" onclick="login()">Let's go !</button>
+        <br>
+        <p id="message"></p>
+    </div>
+    <div class="col-md-2 order-md-1"></div>
+    <div class="col-md-2 order-md-3"></div>
+  </div>
+</div>
+{% include 'scripts.html' %}
+  </body>
+</html>

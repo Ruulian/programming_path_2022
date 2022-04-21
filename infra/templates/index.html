@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'head.html' %}
+    <title>Concours</title>
+  </head>
+  <body>
+
+  <div id="particles-js"></div>
+    <div class="navbar-dark text-white">
+      <div class="container">
+        {% include 'nav.html' %}
+  
+      </div>
+    </div>
+    <div class="jumbotron bg-transparent mb-0 radius-0">
+      <div class="container">
+          <div class="row">
+            <div class="col-xl-6">
+              <h1 class="display-3">Concours de programmation<span class="vim-caret">&nbsp;</span></h1>
+              <div class="lead mb-3 text-mono text-success">
+                Bonjour à tous et bienvenue sur le concours de programmation du lycée d'Arsonval financé par Prologin.
+              </div>
+              <div class="lead mb-3 text-mono description">
+                <a href="https://prologin.org/">Prologin</a> est une association créée par des élèves de l'<a href="https://epita.fr">EPITA</a> et de l'<a href="https://www.polytechnique.edu/">École Polytechnique</a> qui cherche à promouvoir l'informatique et l'algorithmique auprès des étudiants.
+                Elle organise chaque année le concours du même nom, aussi appelé le Concours national d'informatique. Ce concours annuel est ouvert aux francophones de l'Union européenne âgés de 21 ans ou moins.
+              </div>
+              <div class="lead mb-3 text-mono description">
+                Applique tes compétences en programmation pour essayer de gagner le <a href="https://www.okdo.com/fr/p/raspberry-pi-400-all-in-one-personal-computer-kit-french-keyboard-layout/">kit complet Raspberry Pi 400</a> !
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <img class="canvas_img" src="{{ url_for('static', filename='img/programming_path.png') }}" alt="">
+            </div>
+          </div>
+          <div class="container py-5">
+            
+          </div>
+
+          <div class="footer">
+            <div class="row justify-content-center" style="text-align: center">
+              <div class="col">
+                
+              </div>
+            </div>
+          </div>
+          {% include 'scripts.html' %}
+      </div>
+    </div>
+  </body>
+</html>

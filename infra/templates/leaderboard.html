@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'head.html' %}
+    <title>Classement</title>
+  </head>
+  <body>
+
+    <div class="navbar-dark text-white">
+      <div class="container">
+        {% include 'nav.html' %}
+  
+      </div>
+    </div>
+    <h1 class="display-2" style="text-align: center">Classement !<span class="vim-caret">͏͏&nbsp;</span></h1>
+    <div class="lead mb-3 text-mono text-success" style="text-align: center">
+        Là où le verdict sera rendu !
+    </div>
+    <div class="jumbotron bg-transparent mb-0 radius-0">
+      <div class="container">
+          <div class="row">
+            <div class="col-xl-6">
+
+            </div>
+            <div class="col-xl-12">
+                <table class="table table-hover table-dark">
+                  <thead>
+                    <tr class="bg-dark">
+                      <th>#</th>
+                      <th>Pseudo</th>
+                      <th>Points</th>
+                    </tr>
+                  </thead>
+                  <tbody id="leaderboard_body">
+                    {% for user in scoreboard %}
+                    <tr>
+                      <th scope="row">{{ user[0] }}</th>
+                      <td>{{ user[1] }}</td>
+                      <td>{{ user[2] }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+          </div>
+      </div>
+    </div>
+    {% include 'scripts.html' %}
+    <script>
+      get_leaderboard()
+      setInterval(
+        get_leaderboard,
+        60000
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Inscription</title>
+    {% include 'head.html' %}
+  </head>
+  <body>
+
+      <div id="particles-js"></div>
+
+  <div class="navbar-dark text-white">
+    <div class="container">
+      {% include 'nav.html' %}
+
+    </div>
+  </div>
+
+
+  
+<div class="container py-5 mb-5">
+
+  <h1 class="mb-5" style="text-align: center">Inscription<span class="vim-caret">͏͏&nbsp;&nbsp;</span></h1>
+  <div class="row py-4">
+    <div class="col-md-8 order-md-2">
+      <h4 class="mb-3">Identifiants</h4>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">Prénom</label>
+            <input type="text" class="form-control" id="first_name" placeholder="Prénom" value="" required>
+            <div class="invalid-feedback">
+              Merci d'entrer un prénom valide.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Nom</label>
+            <input type="text" class="form-control" id="last_name" placeholder="Nom de famille" value="" required>
+            <div class="invalid-feedback">
+              Merci d'entrer un nom de famille valide.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="username">Pseudo</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">@</span>
+            </div>
+            <input type="text" class="form-control" id="username" placeholder="Pseudo" required>
+            <div class="invalid-feedback" style="width: 100%;">
+              Merci de renseigner un pseudo.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="password">Mot de passe<span class="text-muted"></span></label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">#</span>
+              </div>
+              <input type="password" class="form-control" id="password" placeholder="Sois sûr qu'il n'y ait personne derrière toi ;)">
+              <div class="invalid-feedback">
+                Merci d'entrer un mot de passe valide.
+              </div>
+            </div>
+          </div>
+
+        <button class="btn btn-outline-success btn-shadow btn-lg btn-block" onclick="register()">Je m'inscris !</button>
+        <br>
+        <p id="message"></p>
+    </div>
+    <div class="col-md-2 order-md-1"></div>
+    <div class="col-md-2 order-md-3"></div>
+  </div>
+</div>
+{% include 'scripts.html' %}
+  </body>
+</html>
