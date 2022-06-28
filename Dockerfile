@@ -18,8 +18,6 @@ ADD ./infra .
 WORKDIR /challenges
 ADD ./challenges .
 
-# Copy sh startup script
-COPY start.sh /start.sh
 
 # Start the challenge
-CMD /start.sh
+CMD /app/start.sh

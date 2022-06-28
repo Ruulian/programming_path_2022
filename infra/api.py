@@ -3,9 +3,12 @@ import json
 import sqlite3
 from collections import defaultdict
 import os
+from urllib.parse import urljoin
+import socket
 
 DB_PATH = "/var/databases/prog_tournament.sqlite"
 SALT = ",ZYod9Qk*5e_+QO"
+HOST = socket.gethostbyname(socket.gethostname())
 
 def group_list(list_to_sort:list):
     d = defaultdict(list)
@@ -43,7 +46,7 @@ class DB:
         self.conn.commit()
         
 
-    def insert_challenge(self, id, name, category, points, flag, url, description, hint, published):
+    def insert_challenge(self, id, name, category, points, flag, path, port, description, hint, published):
         self.cur.execute(
             "insert or ignore into challenges(id, name, category, points, flag, url, description, hint, published) values(:id, :name, :category, :points, :flag, :url, :description, :hint, :published)",
             {
@@ -52,8 +55,8 @@ class DB:
                 "category":category,
                 "points":points,
                 "flag":flag,
-                "url":url,
-                "description":description,
+                "url":urljoin(f"http://{HOST}:{port}", path),
+                "description":description.format(host=HOST),
                 "hint":hint,
                 "published":published
             }
@@ -70,7 +73,7 @@ class DB:
         for table in j["tables"]:
             self.create_table(table)
         for chall in j["challenges"]:
-            self.insert_challenge(chall["id"], chall["name"], chall["category"], chall["points"], chall["flag"], chall["url"], chall["description"], chall["hint"], 1)
+            self.insert_challenge(chall["id"], chall["name"], chall["category"], chall["points"], chall["flag"], chall["path"], chall["port"], chall["description"], chall["hint"], 1)
 
     # User interaction
     def register(self, first_name, last_name, username, password):
@@ -285,3 +288,5 @@ class DB:
             f"DROP TABLE {table}"
         )
         self.conn.commit()
+
+print(HOST)
